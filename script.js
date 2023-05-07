@@ -10,16 +10,30 @@ async function getAiringAnime() {
         response = await fetch(`https://api.jikan.moe/v4/seasons/now?page=${i}`)
         jsonResponse = await response.json()
         jsonResponse.data.forEach(a => {
-            animeItem = document.createElement("li")
-            animeItem.setAttribute("class", "show")
-            animeItem.innerText = a.title_english || a.title
+            // Creates a list item to represent a show
+            const show = document.createElement("li")
+            show.setAttribute("class", "show")
 
-            itemImage = document.createElement("img")
-            itemImage.setAttribute("class", "show-image")
-            itemImage.setAttribute("src", a.images.jpg.image_url)
-            animeItem.append(itemImage)
+            // Adds the show's image
+            const showImage = document.createElement("img")
+            showImage.setAttribute("class", "show-image")
+            showImage.setAttribute("src", a.images.jpg.image_url)
+            show.append(showImage)
 
-            animeList.append(animeItem)
+            // Adds the show's title in English and Japanese
+            const showTitleContainer = document.createElement("div")
+            showTitleContainer.setAttribute("class", "show-title")
+            const showTitleEnglish = document.createElement("p")
+            showTitleEnglish.innerText = a.title_english || a.title
+            const showTitleJapanese = document.createElement("p")
+            showTitleJapanese.innerText = a.title_japanese
+            showTitleContainer.append(showTitleEnglish)
+            showTitleContainer.append(showTitleJapanese)
+            show.append(showTitleContainer)
+
+
+
+            animeList.append(show)
         })
     }
 }

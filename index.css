@@ -1,12 +1,12 @@
 ul {
     list-style-type: none;
+    padding-left: 0;
 }
 
 .show {
     display: flex;
     align-items: center;
     column-gap: 1em;
-    flex-direction: row-reverse;
     justify-content: left;
 
     border: 1px solid gray;
@@ -14,4 +14,11 @@ ul {
     height: 7.5em;
     margin: 1em 0;
     overflow: hidden;
+}
+
+.show-title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
